@@ -10,6 +10,7 @@
         <script type="text/javascript" src="/libs/angular-bootstrap/ui-bootstrap-tpls.min.js" ></script>
         <script type="text/javascript" src="/javascripts/todo.js" ></script>
         <script type="text/javascript" src="/javascripts/kittens.js" ></script>
+        <script type="text/javascript" src="/javascripts/dropDown.js"></script>
     </head>
     <body>
         <h1>Angular</h1>
@@ -23,7 +24,37 @@
             <h1>Hello {{yourName}}!</h1>
         </div>
 
-        <div class="col-md-5 col-md-offset-1 section" ng-controller="TodoController">
+
+
+
+
+        <div class="col-md-5 col-md-offset-1 section">
+            <h1>GPA Calcamnator</h1>
+
+            <div ng-controller="DropdownCtrl">
+                <div class="btn-group" dropdown is-open="status.isopen">
+                    <button type="button" class="btn btn-primary dropdown-toggle">
+                        Button dropdown <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+        <div class="col-md-5 col-md-offset-1 section2" ng-controller="TodoController">
             <h2>Todo</h2>
             <span>{{remaining()}} of {{todos.length}} remaining</span>
             [ <a href="" ng-click="archive()">archive</a> ]
@@ -39,5 +70,7 @@
                 <input class="btn-primary" type="submit" value="add">
             </form>
         </div>
+
+
     </body>
 </html>

@@ -10,6 +10,7 @@
     <script type="text/javascript" src="/libs/angular-bootstrap/ui-bootstrap-tpls.min.js" ></script>
     <script type="text/javascript" src="/javascripts/todo.js" ></script>
     <script type="text/javascript" src="/javascripts/kittens.js" ></script>
+
 </head>
 <body>
 <h1>Take Me <a href="/">Home</a></h1>
@@ -37,23 +38,23 @@
         </div>
     </div>
 
+
+
+
+
+
     <div class="col-md-4 col-md-offset-1 section" ng-controller="DropdownCtrl">
-        <!-- Simple dropdown -->
-        <span class="dropdown" on-toggle="toggled(open)">
-          <a href class="dropdown-toggle">
-              Click me for a dropdown, yo!
-          </a>
-          <ul class="dropdown-menu">
-              <li ng-repeat="choice in items">
-                  <a href>{{choice}}</a>
-              </li>
-          </ul>
-        </span>
+        <h1>GPA Calcumnator</h1>
 
-        <!-- Single button -->
+        <table id="gpaTable" border="1">
+            <tr>
+                <td>
+                    Class 1
+                </td>
+                <td>
         <div class="btn-group" dropdown is-open="status.isopen">
-            <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
-                Button dropdown <span class="caret"></span>
+            <button type="button" class="btn btn-primary dropdown-toggle">
+                Grade 1 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
@@ -63,13 +64,11 @@
                 <li><a href="#">Separated link</a></li>
             </ul>
         </div>
-
-        <!-- Split button -->
-        <div class="btn-group" dropdown>
-            <button type="button" class="btn btn-danger">Action</button>
-            <button type="button" class="btn btn-danger dropdown-toggle">
-                <span class="caret"></span>
-                <span class="sr-only">Split button!</span>
+                    </td>
+        <td>
+        <div class="btn-group" dropdown is-open="status.isopen">
+            <button type="button" class="btn btn-primary dropdown-toggle">
+                Credit 1 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Action</a></li>
@@ -79,12 +78,193 @@
                 <li><a href="#">Separated link</a></li>
             </ul>
         </div>
+                </td>
+            </tr>
 
-        <hr />
-        <p>
-            <button type="button" class="btn btn-default btn-sm" ng-click="toggleDropdown($event)">Toggle button dropdown</button>
-            <button type="button" class="btn btn-warning btn-sm" ng-click="disabled = !disabled">Enable/Disable</button>
-        </p>
+
+
+
+        <tr>
+            <td>
+                Class 2
+            </td>
+            <td>
+        <div class="btn-group" dropdown is-open="status.isopen">
+            <button type="button" class="btn btn-primary dropdown-toggle" >
+                Grade 2 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+                </td>
+        <td>
+        <div class="btn-group" dropdown is-open="status.isopen">
+            <button type="button" class="btn btn-primary dropdown-toggle">
+                Credit 2 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+            </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    Class 3
+                </td>
+                <td>
+        <div class="btn-group" dropdown is-open="status.isopen">
+            <button type="button" class="btn btn-primary dropdown-toggle">
+                Grade 3 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+                    </td>
+            <td>
+        <div class="btn-group" dropdown is-open="status.isopen">
+            <button type="button" class="btn btn-primary dropdown-toggle">
+                Credit 3 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+            </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    Class 4
+                </td>
+                <td>
+                    <div class="btn-group" dropdown is-open="status.isopen">
+                        <button type="button" class="btn btn-primary dropdown-toggle">
+                            Grade 4 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group" dropdown is-open="status.isopen">
+                        <button type="button" class="btn btn-primary dropdown-toggle">
+                            Credit 4 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Class 5
+                </td>
+                <td>
+                    <div class="btn-group" dropdown is-open="status.isopen">
+                        <button type="button" class="btn btn-primary dropdown-toggle">
+                            Grade 5 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group" dropdown is-open="status.isopen">
+                        <button type="button" class="btn btn-primary dropdown-toggle">
+                            Credit 5 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Class 6
+                </td>
+                <td>
+                    <div class="btn-group" dropdown is-open="status.isopen">
+                        <button type="button" class="btn btn-primary dropdown-toggle">
+                            Grade 6 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group" dropdown is-open="status.isopen">
+                        <button type="button" class="btn btn-primary dropdown-toggle">
+                            Credit 6 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <button type="button" class="btn btn-primary">
+            Calculate
+        </button>
+
+
+
 
     </div>
 </body>
