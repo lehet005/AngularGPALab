@@ -16,14 +16,70 @@ function CarouselDemoCtrl($scope) {
 }
 
 function DropdownCtrl($scope) {
-    $scope.items = [
-        'The first choice!',
-        'And another choice for you.',
-        'but wait! A third!'
+    $scope.items = [{
+        id: 4,
+        name: "A"
+    },
+        {
+            id: 3 + 2/3,
+            name: "A-"
+        },
+        {
+            id: 3 + 1/3,
+            name: "B+"
+        },
+        {
+            id: 3,
+            name: "B"
+        },{
+            id: 2 +2/3,
+            name: "B-"
+        },
+        {
+            id: 2 + 1/3,
+            name: "C+"
+        },
+        {
+            id: 2,
+            name: "C"
+        },
+        {
+            id: 1 + 2/3,
+            name: "C-"
+        },
+        {
+            id: 1 + 1/3,
+            name: "D+"
+        },
+        {
+            id: 1,
+            name: "D"
+        },
+        {
+            id: 0,
+            name: "F"
+        }
+
+
+
+
     ];
 
     $scope.status = {
-        isopen: false
+        isopen: false,
+        isopen1: false,
+        isopen2: false,
+        isopen3: false,
+        isopen4: false,
+        isopen5: false,
+        isopen6: false,
+        isopen7: false,
+        isopen8: false,
+        isopen9: false,
+        isopen10: false,
+        isopen11: false
+
+
     };
 
     $scope.toggled = function(open) {
