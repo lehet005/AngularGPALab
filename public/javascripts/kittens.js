@@ -64,6 +64,7 @@ function DropdownCtrl($scope) {
 
 
     ];
+    $scope.selected_val = 3;
 
     $scope.status = {
         isopen: false,
@@ -92,3 +93,27 @@ function DropdownCtrl($scope) {
         $scope.status.isopen = !$scope.status.isopen;
     };
 }
+
+
+
+element.append($compile(html)(scope));
+for (var i = 0; i < scope.items.length; i++) {
+    if (scope.items[i].id === scope.selectedItem) {
+        scope.bSelectedItem = scope.items[i];
+        break;
+    }
+}
+scope.selectVal = function (item) {
+    switch (attrs.menuType) {
+        case "button":
+            $('button.button-label', element).html(item.name);
+            break;
+        default:
+            $('a.dropdown-toggle', element).html('<b class="caret"></b> ' + item.name);
+            break;
+    }
+    scope.doSelect({
+        selectedVal: item.id
+    });
+};
+scope.selectVal(scope.bSelectedItem);
