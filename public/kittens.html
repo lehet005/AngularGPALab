@@ -10,307 +10,99 @@
     <script type="text/javascript" src="/libs/angular-bootstrap/ui-bootstrap-tpls.min.js" ></script>
     <script type="text/javascript" src="/javascripts/todo.js" ></script>
     <script type="text/javascript" src="/javascripts/kittens.js" ></script>
-    <script type="text/javascript" src="/javascripts/newcalcGPA.js" ></script>
 
 </head>
 <body>
 <h1>Take Me <a href="/">Home</a></h1>
-    <div class="col-md-4 col-md-offset-1 section" ng-controller="CarouselDemoCtrl">
-        <h2>Kitten Carousel</h2>
-        <div style="height: 305px">
-            <carousel interval="myInterval">
-                <slide ng-repeat="slide in slides" active="slide.active">
-                    <img ng-src="{{slide.image}}" style="margin:auto;">
-                    <div class="carousel-caption">
-                        <h4>Slide {{$index}}</h4>
-                        <p>{{slide.text}}</p>
-                    </div>
-                </slide>
-            </carousel>
+<div class="col-md-4 col-md-offset-1 section" ng-controller="CarouselDemoCtrl">
+    <h2>Kitten Carousel</h2>
+    <div style="height: 305px">
+        <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                    <h4>Slide {{$index}}</h4>
+                    <p>{{slide.text}}</p>
+                </div>
+            </slide>
+        </carousel>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
-            </div>
-            <div class="col-md-6">
-                Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
-                <br />Enter a negative number to stop the interval.
-            </div>
+        <div class="col-md-6">
+            Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
+            <br />Enter a negative number to stop the interval.
         </div>
     </div>
+</div>
 
 
 
+<div class="col-md-4 col-md-offset-1 section2">
 
-
-
-    <div class="col-md-4 col-md-offset-1 section" ng-controller="DropdownCtrl">
-        <h1>GPA Calcumnator</h1>
-
-        <table id="gpaTable" border="5">
+    <div ng-controller="DropdownCtrl">
+        <table id="table" style="width:75%">
             <tr>
-                <td>
-                    Class 1
-                </td>
-                <td>
-        <div class="btn-group" dropdown is-open="status.isopen">
-            <button type="button" class="btn btn-primary dropdown-toggle">
-                Grade 1 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">A</a></li>
-                <li><a href="#">A-</a></li>
-                <li><a href="#">B+</a></li>
-                <li><a href="#">B</a></li>
-                <li><a href="#">B-</a></li>
-                <li><a href="#">C+</a></li>
-                <li><a href="#">C</a></li>
-                <li><a href="#">C-</a></li>
-                <li><a href="#">D+</a></li>
-                <li><a href="#">D</a></li>
-                <li><a href="#">F</a></li>
-                <li><a href="#">N/A</a></li>
-            </ul>
-        </div>
-                    </td>
-        <td>
-        <div class="btn-group" dropdown is-open="status.isopen1">
-            <button type="button" class="btn btn-primary dropdown-toggle">
-                Credit 1 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">N/A</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-            </ul>
-        </div>
-                </td>
+                <th id="gradeClass">
+                    Grade in Class
+                </th>
+                <th id="creditClass">
+                    Credits in Class
+                </th>
             </tr>
 
 
+            <tr ng-repeat="gpa in classes track by $index">
 
 
-        <tr>
+                <td>
+                    <div class="btn-group" dropdown is-open="statuses.isopen{{$index+1}}">
+
+                        <button type="button" class="btn btn-primary dropdown-toggle">
+
+                            {{gpa.grade}} <span class="caret"></span>
+
+                        </button>
+
+                        <ul  class="dropdown-menu" role="menu">
+
+                            <li ng-repeat="grade in grades"><a href="#" ng-click="selectGrade(gpa, grade)">{{grade.grade}}</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="btn-group" dropdown is-open="statuses.isopen{{$index+7}}">
+
+                        <button type="button" class="btn btn-primary dropdown-toggle">
+
+                            {{gpa.credit}} <span class="caret"></span>
+
+                        </button>
+
+                        <ul  class="dropdown-menu" role="menu">
+
+                            <li ng-repeat="credits in credits"><a href="#" ng-click="selectCredit(gpa, credits)">{{credits}}</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+
+            </tr>
             <td>
-                Class 2
+            <p id="gpaCalc"><b>Your total GPA for the selected Classes and Credits is...</b></p>
             </td>
-            <td>
-        <div class="btn-group" dropdown is-open="status.isopen2">
-            <button type="button" class="btn btn-primary dropdown-toggle" >
-                Grade 2 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">A</a></li>
-                <li><a href="#">A-</a></li>
-                <li><a href="#">B+</a></li>
-                <li><a href="#">B</a></li>
-                <li><a href="#">B-</a></li>
-                <li><a href="#">C+</a></li>
-                <li><a href="#">C</a></li>
-                <li><a href="#">C-</a></li>
-                <li><a href="#">D+</a></li>
-                <li><a href="#">D</a></li>
-                <li><a href="#">F</a></li>
-                <li><a href="#">N/A</a></li>
-            </ul>
-        </div>
-                </td>
-        <td>
-        <div class="btn-group" dropdown is-open="status.isopen3">
-            <button type="button" class="btn btn-primary dropdown-toggle">
-                Credit 2 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">N/A</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-            </ul>
-        </div>
-            </td>
-            </tr>
+            <td><p id="GPAtotal"><b>{{GPA()}}</b></p></td>
 
-
-
-            <tr>
-                <td>
-                    Class 3
-                </td>
-                <td>
-        <div class="btn-group" dropdown is-open="status.isopen4">
-            <button type="button" class="btn btn-primary dropdown-toggle">
-                Grade 3 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">A</a></li>
-                <li><a href="#">A-</a></li>
-                <li><a href="#">B+</a></li>
-                <li><a href="#">B</a></li>
-                <li><a href="#">B-</a></li>
-                <li><a href="#">C+</a></li>
-                <li><a href="#">C</a></li>
-                <li><a href="#">C-</a></li>
-                <li><a href="#">D+</a></li>
-                <li><a href="#">D</a></li>
-                <li><a href="#">F</a></li>
-                <li><a href="#">N/A</a></li>
-            </ul>
-        </div>
-                    </td>
-            <td>
-        <div class="btn-group" dropdown is-open="status.isopen5">
-            <button type="button" class="btn btn-primary dropdown-toggle">
-                Credit 3 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">N/A</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-            </ul>
-        </div>
-            </td>
-            </tr>
-
-
-
-            <tr>
-                <td>
-                    Class 4
-                </td>
-                <td>
-                    <div class="btn-group" dropdown is-open="status.isopen6">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            Grade 4 <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">A</a></li>
-                            <li><a href="#">A-</a></li>
-                            <li><a href="#">B+</a></li>
-                            <li><a href="#">B</a></li>
-                            <li><a href="#">B-</a></li>
-                            <li><a href="#">C+</a></li>
-                            <li><a href="#">C</a></li>
-                            <li><a href="#">C-</a></li>
-                            <li><a href="#">D+</a></li>
-                            <li><a href="#">D</a></li>
-                            <li><a href="#">F</a></li>
-                            <li><a href="#">N/A</a></li>
-                        </ul>
-                    </div>
-                </td>
-                <td>
-                    <div class="btn-group" dropdown is-open="status.isopen7">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            Credit 4 <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">N/A</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    Class 5
-                </td>
-                <td>
-                    <div class="btn-group" dropdown is-open="status.isopen8">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            Grade 5 <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">A</a></li>
-                            <li><a href="#">A-</a></li>
-                            <li><a href="#">B+</a></li>
-                            <li><a href="#">B</a></li>
-                            <li><a href="#">B-</a></li>
-                            <li><a href="#">C+</a></li>
-                            <li><a href="#">C</a></li>
-                            <li><a href="#">C-</a></li>
-                            <li><a href="#">D+</a></li>
-                            <li><a href="#">D</a></li>
-                            <li><a href="#">F</a></li>
-                            <li><a href="#">N/A</a></li>
-                        </ul>
-                    </div>
-                </td>
-                <td>
-                    <div class="btn-group" dropdown is-open="status.isopen9">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            Credit 5 <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">N/A</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-
-                <td>
-                    Class 6
-                </td>
-                <td>
-                    <div class="btn-group" dropdown is-open="status.isopen10">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            Grade 6 <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">A</a></li>
-                            <li><a href="#">A-</a></li>
-                            <li><a href="#">B+</a></li>
-                            <li><a href="#">B</a></li>
-                            <li><a href="#">B-</a></li>
-                            <li><a href="#">C+</a></li>
-                            <li><a href="#">C</a></li>
-                            <li><a href="#">C-</a></li>
-                            <li><a href="#">D+</a></li>
-                            <li><a href="#">D</a></li>
-                            <li><a href="#">F</a></li>
-                            <li><a href="#">N/A</a></li>
-                        </ul>
-                    </div>
-                </td>
-                <td>
-                    <div class="btn-group" dropdown is-open="status.isopen11">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            Credit 6 <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">N/A</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
         </table>
 
-
-
     </div>
+
+</div>
 </body>
 </html>

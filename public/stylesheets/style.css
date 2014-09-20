@@ -1,31 +1,58 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-color: #FFF9CC;
+    background-color: #f5f5f5;
 }
 
 a {
-  color: #00B7FF;
+  color: red;
 }
+
+
+th, td {
+    padding: 15px;
+}
+
 
 .done-true {
     text-decoration: line-through;
-    color: grey;
+    color: green;
 }
 
 .section {
     border-radius: 10px;
     padding: 20px;
-    background-color: #FFCCD9;
+    background-color: lightgreen;
 }
 
 .section2 {
     border-radius: 10px;
     padding: 20px;
-    background-color: #FFCCD9;
+    background-color: lightgreen;
     padding-top: 10px;
 }
 
-#gpaTable {
-    width: 75%;
+#table {
+    padding: 10px 40px;
+    background: darkslategrey;
+    width: 300px;
+    border-radius: 25px;
+}
+
+#gradeClass {
+    color: lawngreen;
+}
+
+#creditClass {
+    color: gold;
+}
+
+#gpaCalc {
+    color: deepskyblue;
+    font-size: 150%;
+}
+
+#GPAtotal {
+    color: gold;
+    font-size: 150%;
 }

@@ -16,58 +16,76 @@ function CarouselDemoCtrl($scope) {
 }
 
 function DropdownCtrl($scope) {
-    $scope.items = [{
-        id: 4,
-        name: "A"
-    },
+
+
+    $scope.toggled = function (open) {
+        console.log('Dropdown is now: ', open);
+    };
+
+    $scope.toggleDropdown = function ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.status.isopen = !$scope.status.isopen;
+    };
+
+
+    $scope.credits = [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+    ]
+
+    $scope.grades = [
         {
-            id: 3 + 2/3,
-            name: "A-"
+            grade: 'A',
+            id: 4
         },
         {
-            id: 3 + 1/3,
-            name: "B+"
+            grade: 'A-',
+            id: 3 + 2 / 3
         },
         {
-            id: 3,
-            name: "B"
-        },{
-            id: 2 +2/3,
-            name: "B-"
+            grade: 'B+',
+            id: 3 + 1 / 3
         },
         {
-            id: 2 + 1/3,
-            name: "C+"
+            grade: 'B',
+            id: 3
         },
         {
-            id: 2,
-            name: "C"
+            grade: 'B-',
+            id: 2 + 2 / 3
         },
         {
-            id: 1 + 2/3,
-            name: "C-"
+            grade: 'C+',
+            id: 2 + 1 / 3
         },
         {
-            id: 1 + 1/3,
-            name: "D+"
+            grade: 'C',
+            id: 2
         },
         {
-            id: 1,
-            name: "D"
+            grade: 'C-',
+            id: 1 + 2 / 3
         },
         {
-            id: 0,
-            name: "F"
+            grade: 'D+',
+            id: 1 + 1 / 3
+        },
+        {
+            grade: 'D',
+            id: 1
+        },
+        {
+            grade: 'F',
+            id: 0
         }
-
-
-
-
     ];
-    $scope.selected_val = 3;
 
-    $scope.status = {
-        isopen: false,
+    $scope.statuses = {
         isopen1: false,
         isopen2: false,
         isopen3: false,
@@ -78,42 +96,73 @@ function DropdownCtrl($scope) {
         isopen8: false,
         isopen9: false,
         isopen10: false,
-        isopen11: false
+        isopen11: false,
+        isopen12: false
+
+    }
 
 
+    $scope.classes = [
+        {
+            grade: "",
+            id: 0,
+            credit: 0
+        },
+        {
+            grade: "",
+            id: 0,
+            credit: 0
+        },
+        {
+            grade: "",
+            id: 0,
+            credit: 0
+        },
+        {
+            grade: "",
+            id: 0,
+            credit: 0
+        },
+        {
+            grade: "",
+            id: 0,
+            credit: 0
+        },
+        {
+            grade: "",
+            id: 0,
+            credit: 0
+        }
+    ]
+
+
+    $scope.selectGrade = function (course, grade) {
+        course.grade = grade.grade;
+        course.id = grade.id;
     };
 
-    $scope.toggled = function(open) {
-        console.log('Dropdown is now: ', open);
+    $scope.selectCredit = function (course, credits) {
+        course.credit = credits;
     };
 
-    $scope.toggleDropdown = function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        $scope.status.isopen = !$scope.status.isopen;
-    };
-}
+    $scope.GPA = function() {
+        var currentCredits = 0;
+        var currentGradePoints = 0;
+        for (i=0; i < $scope.classes.length; i++){
+            currentCredits = $scope.classes[i].credit + currentCredits;
+            currentGradePoints = ($scope.classes[i].id * $scope.classes[i].credit) + currentGradePoints;
+        }
+        var GPA = currentGradePoints /  currentCredits;
+
+        if (GPA >= 0) {
+            return Math.round(GPA * 1000)/1000;
+        } else {
+            return "Enter in a class and a credit for that class."
+        }
 
 
 
-element.append($compile(html)(scope));
-for (var i = 0; i < scope.items.length; i++) {
-    if (scope.items[i].id === scope.selectedItem) {
-        scope.bSelectedItem = scope.items[i];
-        break;
     }
 }
-scope.selectVal = function (item) {
-    switch (attrs.menuType) {
-        case "button":
-            $('button.button-label', element).html(item.name);
-            break;
-        default:
-            $('a.dropdown-toggle', element).html('<b class="caret"></b> ' + item.name);
-            break;
-    }
-    scope.doSelect({
-        selectedVal: item.id
-    });
-};
-scope.selectVal(scope.bSelectedItem);
+
+
