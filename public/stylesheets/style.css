@@ -35,8 +35,8 @@ th, td {
 #table {
     padding: 10px 40px;
     background: darkslategrey;
-    width: 300px;
     border-radius: 25px;
+    width: 100%;
 }
 
 #gradeClass {
