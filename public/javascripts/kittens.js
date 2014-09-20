@@ -28,7 +28,7 @@ function DropdownCtrl($scope) {
         $scope.status.isopen = !$scope.status.isopen;
     };
 
-
+<!-- This is the array for the credits-->
     $scope.credits = [
         0,
         1,
@@ -36,8 +36,8 @@ function DropdownCtrl($scope) {
         3,
         4,
         5
-    ]
-
+    ];
+<!--This is the grades and corresponding percent of credits you earned array-->
     $scope.grades = [
         {
             grade: 'A',
@@ -84,7 +84,7 @@ function DropdownCtrl($scope) {
             id: 0
         }
     ];
-
+<!-- This determines if a button is clicked open or naaaaah -->
     $scope.statuses = {
         isopen1: false,
         isopen2: false,
@@ -101,8 +101,8 @@ function DropdownCtrl($scope) {
 
     }
 
-
-    $scope.classes = [
+<!-- This is the courses array, it is what is changed by the selectGrade and selectCredit functions-->
+    $scope.courses = [
         {
             grade: "",
             id: 0,
@@ -133,24 +133,28 @@ function DropdownCtrl($scope) {
             id: 0,
             credit: 0
         }
-    ]
 
+    ];
 
+<!-- This is a function that, when used with data-ng-click, changes the grade and id in the courses array-->
     $scope.selectGrade = function (course, grade) {
         course.grade = grade.grade;
         course.id = grade.id;
     };
-
+<!-- This is a function that, when used with data-ng-click, changes the credit in the courses array-->
     $scope.selectCredit = function (course, credits) {
         course.credit = credits;
     };
 
+
+
+<!-- This calculates the GPA, if no classes and credits are entered, it tells to enter in a class and credit-->
     $scope.GPA = function() {
         var currentCredits = 0;
         var currentGradePoints = 0;
-        for (i=0; i < $scope.classes.length; i++){
-            currentCredits = $scope.classes[i].credit + currentCredits;
-            currentGradePoints = ($scope.classes[i].id * $scope.classes[i].credit) + currentGradePoints;
+        for (i=0; i < $scope.courses.length; i++){
+            currentCredits = $scope.courses[i].credit + currentCredits;
+            currentGradePoints = ($scope.courses[i].id * $scope.courses[i].credit) + currentGradePoints;
         }
         var GPA = currentGradePoints /  currentCredits;
 

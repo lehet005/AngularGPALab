@@ -5,12 +5,17 @@ body {
 }
 
 a {
-  color: red;
+  color: deepskyblue;
 }
 
 
 th, td {
     padding: 15px;
+}
+
+h1 {
+    color: deepskyblue;
+    width: 100%;
 }
 
 

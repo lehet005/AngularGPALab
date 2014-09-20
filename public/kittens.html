@@ -44,6 +44,7 @@
 
     <div ng-controller="DropdownCtrl">
         <table id="table" class="fixed">
+            <h1>GPA Calcumnator</h1>
             <col width="50%" />
             <col width="50%" />
             <tr>
@@ -55,22 +56,27 @@
                 </th>
             </tr>
 
-
-            <tr ng-repeat="gpa in classes track by $index">
+            <!--This creates buttons for the GPA calculator, you can add more buttons if you add more courses to the
+            courses array in the kittens.js file.  If you do that, you will also need to add more .isopens.  The
+            examples will be commented out in the kittens.js file.-->
+            <tr ng-repeat="gpa in courses track by $index">
 
 
                 <td>
+                    <!-- This is the grade button itself, it drops down a dropdown menu, the menu includes items from the
+                    grades array in the kittens.js file.-->
                     <div class="btn-group" dropdown is-open="statuses.isopen{{$index+1}}">
 
                         <button type="button" class="btn btn-primary dropdown-toggle">
-
-                            {{gpa.grade}} <span class="caret"></span>
+                            <!-- This is what is displayed on the button-->
+                            Grade  {{$index+1}}: {{gpa.grade}} <span class="caret"></span>
 
                         </button>
 
                         <ul  class="dropdown-menu" role="menu">
-
-                            <li ng-repeat="grade in grades"><a href="#" ng-click="selectGrade(gpa, grade)">{{grade.grade}}</a>
+                            <!-- This is what allows us to change what the button says because of the data-ng-click and
+                            it also changes the courses array (grade and id) which is used for the GPA calculation-->
+                            <li ng-repeat="grade in grades"><a href="#" data-ng-click="selectGrade(gpa, grade)">{{grade.grade}}</a>
 
                             </li>
                         </ul>
@@ -78,17 +84,20 @@
                 </td>
 
                 <td>
+                    <!-- This is the credit button itself, it drops down a dropdown menu, the menu includes items from the
+                    credits array in the kittens.js file.-->
                     <div class="btn-group" dropdown is-open="statuses.isopen{{$index+7}}">
 
                         <button type="button" class="btn btn-primary dropdown-toggle">
 
-                            {{gpa.credit}} <span class="caret"></span>
+                            Credit {{$index+1}}:  {{gpa.credit}} <span class="caret"></span>
 
                         </button>
 
                         <ul  class="dropdown-menu" role="menu">
-
-                            <li ng-repeat="credits in credits"><a href="#" ng-click="selectCredit(gpa, credits)">{{credits}}</a>
+                            <!-- This is what allows us to change what the button says because of the data-ng-click and
+                            it also changes the courses array (credit) which is used for the GPA calculation-->
+                            <li ng-repeat="credits in credits"><a href="#" data-ng-click="selectCredit(gpa, credits)">{{credits}}</a>
 
                             </li>
                         </ul>
@@ -97,6 +106,7 @@
 
             </tr>
             <td>
+            <!-- This displays the GPA total-->
             <p id="gpaCalc"><b>Your total GPA for the selected Classes and Credits is...</b></p>
             </td>
             <td><p id="GPAtotal"><b>{{GPA()}}</b></p></td>
