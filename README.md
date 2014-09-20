@@ -47,3 +47,25 @@ GPA Calculator Image Examples
 
 ![A basic GPA calculator](basicGPA.png)
 ![A fancy and more advanced GPA calculator](fancyGPA.png)
+
+
+Resources we found helpful!
+===========================
+http://jsfiddle.net/cojahmetov/3DS49/
+http://angular-ui.github.io/bootstrap/
+http://www.back2college.com/gpa.htm
+http://angularjs4u.com/bootstrap/angularjs-bootstrap-ui-drop-demo/
+http://stackoverflow.com/questions/15090185/angularjs-bootstrap-dropdown-cant-do-ng-click-in-ng-repeat
+
+
+Tests that would've tried!
+==========================
+Trying different values inputed and see if it displayed the correct result. We would test this to make sure that
+our GPA calculations are correct, also to see if the numbers were being pulled through all the way.
+
+Testing if the button selected is the correct one.  We would test this to make sure that the user, when selecting
+a button, is selecting the correct one.
+
+Test if selecting in the button from the menu worked.  We would test this to make sure that the correct value has
+changed in the courses array and to see if it changed correctly displaying on the button itself.
+
